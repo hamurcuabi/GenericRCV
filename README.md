@@ -65,4 +65,5 @@ testAdapter = new TestAdapter(this, this, emptyView);
  ```
  I am strongly recommended to you looking for sample project. It is basic and understable   
   ```
+  ![Alt Text](https://giphy.com/gifs/f5uoUMtt3znuc7PHQ9)
 
