@@ -28,7 +28,10 @@ public class MainActivity extends AppCompatActivity implements IOnItemClickListe
     RelativeLayout emptyView;
     @BindView(R.id.searchView)
     SearchView searchView;
+
+    //Adapter
     TestAdapter testAdapter;
+    //Our Model
     List<TestModel> testModelList;
 
 
