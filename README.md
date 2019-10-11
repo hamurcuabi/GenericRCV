@@ -49,14 +49,11 @@ public class TestAdapter extends GenericAdapter<TestModel,
         IOnItemClickListener<TestModel>,
         TestViewHolder> implements Filterable ..
      ```
-```     
+ 
 4-Createviewholder   
 
 public class TestViewHolder extends BaseViewHolder<TestModel,
         IOnItemClickListener<TestModel>> ...
-
-```
-
 ```
 ```
 5-Activty or fragment setup your adapter should implements IOnItemClickListener, IOnSwipe
