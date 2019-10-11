@@ -50,7 +50,7 @@ public class TestAdapter extends GenericAdapter<TestModel,
         TestViewHolder> implements Filterable ..
      ```
  
-4-Createviewholder   
+4-Create Viewholder   
 
 public class TestViewHolder extends BaseViewHolder<TestModel,
         IOnItemClickListener<TestModel>> ...
@@ -63,7 +63,7 @@ testAdapter = new TestAdapter(this, this, emptyView);
 ```
  
  ```
- I am strongly recommended to you looking for sample project. It is basic and understable   
+ I am strongly recommending to you looking for sample project. It is basic and understable   
   ```
   
   ![GenericRCV Demo](https://media.giphy.com/media/f5uoUMtt3znuc7PHQ9/giphy.gif)
