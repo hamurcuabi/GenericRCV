@@ -66,5 +66,5 @@ testAdapter = new TestAdapter(this, this, emptyView);
  I am strongly recommended to you looking for sample project. It is basic and understable   
   ```
   
-  ![Alt Text](https://media.giphy.com/media/f5uoUMtt3znuc7PHQ9/source.mp4)
+  ![GenericRCV Demo](https://media.giphy.com/media/f5uoUMtt3znuc7PHQ9/giphy.gif)
 
