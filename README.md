@@ -31,31 +31,39 @@ Current Version is 0.1.0
 ```
 
 ## Configuration
-
+```
 1-Create your model extending from BaseModel (TestModel)
+
   public class TestModel extends BaseModel 
- 
+```
+```
 2-Create your item layout for view (I am using databinding and butterknife)
 
   item_test.xml in layput folder from our sample project you can copy and  past then build it to generate binding classes
+  ```
   
+  ```
 3-Create adapter
 
 public class TestAdapter extends GenericAdapter<TestModel,
         IOnItemClickListener<TestModel>,
         TestViewHolder> implements Filterable ..
-        
+     ```
+```     
 4-Createviewholder   
-
 
 public class TestViewHolder extends BaseViewHolder<TestModel,
         IOnItemClickListener<TestModel>> ...
-	
+
+```
+
+```
+```
 5-Activty or fragment setup your adapter should implements IOnItemClickListener, IOnSwipe
 
 testAdapter = new TestAdapter(this, this, emptyView);
         GRVHelper.setupWithSwipe(testAdapter, recyclerView, this);
-    That it! 
+```
  
  ```
  I am strongly recommended to you looking for sample project. It is basic and understable   
