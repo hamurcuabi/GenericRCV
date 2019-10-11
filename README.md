@@ -1,6 +1,6 @@
 # GenericRCV 
-								:bicyclist:																
-GenericRCV makes Recyclerviews simple
+					
+GenericRCV makes Recyclerviews simple :bicyclist:
 
 ## Prerequisites
 
