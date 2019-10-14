@@ -17,6 +17,7 @@ import com.emrhmrc.genericrecycler.interfaces.IOnSwipe;
 public class GRVHelper {
 
     private static int resId = R.anim.layout_animation_fall_down;
+    private static LayoutAnimationController animation;
 
     public static void setup(GenericAdapter adapter,
                              @NonNull RecyclerView recyclerView,
@@ -24,8 +25,7 @@ public class GRVHelper {
         recyclerView.setLayoutManager(layoutManager);
         recyclerView.setItemAnimator(new DefaultItemAnimator());
         recyclerView.setHasFixedSize(true);
-        LayoutAnimationController animation =
-                AnimationUtils.loadLayoutAnimation(recyclerView.getContext(), resId);
+        animation = AnimationUtils.loadLayoutAnimation(recyclerView.getContext(), resId);
         recyclerView.setAdapter(adapter);
     }
 
@@ -35,8 +35,7 @@ public class GRVHelper {
         recyclerView.setLayoutManager(new LinearLayoutManager(recyclerView.getContext()));
         recyclerView.setItemAnimator(new DefaultItemAnimator());
         recyclerView.setHasFixedSize(true);
-        LayoutAnimationController animation =
-                AnimationUtils.loadLayoutAnimation(recyclerView.getContext(), resId);
+        animation = AnimationUtils.loadLayoutAnimation(recyclerView.getContext(), resId);
         recyclerView.setAdapter(adapter);
     }
 
@@ -47,8 +46,7 @@ public class GRVHelper {
         recyclerView.setItemAnimator(new DefaultItemAnimator());
         recyclerView.setHasFixedSize(true);
         recyclerView.setAdapter(adapter);
-        LayoutAnimationController animation =
-                AnimationUtils.loadLayoutAnimation(recyclerView.getContext(), resId);
+        animation = AnimationUtils.loadLayoutAnimation(recyclerView.getContext(), resId);
         recyclerView.setLayoutAnimation(animation);
         ItemTouchHelper itemTouchhelper = new ItemTouchHelper(new BaseAdapterSwipe(adapter, iOnSwipe));
         itemTouchhelper.attachToRecyclerView(recyclerView);
