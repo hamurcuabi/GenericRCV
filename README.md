@@ -27,7 +27,7 @@ dependencies {
 ```
 
 ```
-Current Version is 0.1.0
+Current Version is 0.1.1
 ```
 
 ## Configuration
