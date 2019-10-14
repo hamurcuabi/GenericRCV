@@ -63,5 +63,5 @@ testAdapter = new TestAdapter(this, this, emptyView);
  I am strongly recommending to you looking for sample project. It is basic and understable   
   ```
   
-  ![GenericRCV Demo](https://media.giphy.com/media/f5uoUMtt3znuc7PHQ9/giphy.gif)
+  ![GenericRCV Demo](https://media.giphy.com/media/gGqTDj6UBMRZsX51CT/giphy.gif)
 
