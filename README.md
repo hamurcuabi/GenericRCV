@@ -27,7 +27,7 @@ dependencies {
 ```
 
 ```
-Current Version is 0.1.1
+[![](https://jitpack.io/v/hamurcuabi/GenericRCV.svg)](https://jitpack.io/#hamurcuabi/GenericRCV)
 ```
 
 ## Configuration
