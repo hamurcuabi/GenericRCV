@@ -22,9 +22,10 @@ Add this to your module's `build.gradle` file (make sure the version matches the
 dependencies {
 	...
 	 implementation 'com.github.hamurcuabi:GenericRCV:CURRENT VERSION'
+	 [![](https://jitpack.io/v/hamurcuabi/GenericRCV.svg)](https://jitpack.io/#hamurcuabi/GenericRCV)
+
 }
 ```
-[![](https://jitpack.io/v/hamurcuabi/GenericRCV.svg)](https://jitpack.io/#hamurcuabi/GenericRCV)
 
 ## Configuration
 ```
