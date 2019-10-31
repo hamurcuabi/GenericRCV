@@ -3,8 +3,6 @@ package com.emrhmrc.genericrecyclerview;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
-import android.view.animation.AnimationUtils;
-import android.view.animation.LayoutAnimationController;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.RelativeLayout;
@@ -130,8 +128,8 @@ public class MainActivity extends AppCompatActivity implements IOnItemClickListe
                 break;
 
         }
-        LayoutAnimationController animation = AnimationUtils.loadLayoutAnimation(this, resId);
-        recyclerView.setLayoutAnimation(animation);
+        GRVHelper.setResId(resId);
+        setAdapter();
         testAdapter.getItems().clear();
         setAdapter();
         prepareData();
