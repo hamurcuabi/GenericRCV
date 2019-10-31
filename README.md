@@ -1,5 +1,5 @@
 # GenericRCV 
-					
+[![](https://jitpack.io/v/hamurcuabi/GenericRCV.svg)](https://jitpack.io/#hamurcuabi/GenericRCV)					
 GenericRCV makes Recyclerviews simple :bicyclist:
 [![](https://jitpack.io/v/hamurcuabi/GenericRCV.svg)](https://jitpack.io/#hamurcuabi/GenericRCV)
 ## Prerequisites
