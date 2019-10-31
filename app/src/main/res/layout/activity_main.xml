@@ -7,13 +7,21 @@
     android:theme="@style/AppTheme.BaseMaterialLibrary"
     tools:context=".MainActivity">
 
+    <androidx.appcompat.widget.AppCompatSpinner
+        android:id="@+id/spinner"
+        android:layout_width="0dp"
+        android:layout_height="?actionBarSize"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
     <androidx.appcompat.widget.SearchView
         android:id="@+id/searchView"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toBottomOf="@id/spinner" />
 
     <FrameLayout
         android:layout_width="0dp"
@@ -26,5 +34,6 @@
         <include layout="@layout/generic_recyclerview" />
 
     </FrameLayout>
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>
