@@ -1,6 +1,8 @@
 # GenericRCV 
 					
 GenericRCV makes Recyclerviews simple :bicyclist:
+
+[![](https://jitpack.io/v/hamurcuabi/GenericRCV.svg)](https://jitpack.io/#hamurcuabi/GenericRCV)
 ## Prerequisites
 
 Add this in your root `build.gradle` file (**not** your module `build.gradle` file):
