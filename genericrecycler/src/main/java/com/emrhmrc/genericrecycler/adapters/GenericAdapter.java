@@ -4,7 +4,6 @@ import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.RelativeLayout;
 
 import androidx.annotation.LayoutRes;
 import androidx.annotation.NonNull;
@@ -26,7 +25,7 @@ public abstract class GenericAdapter<T extends BaseModel, L extends IGenericBase
     private L listener;
     private LayoutInflater layoutInflater;
     private Context context;
-    private RelativeLayout emptyView;
+    private ViewGroup emptyView;
 
 
     @Deprecated
@@ -40,7 +39,7 @@ public abstract class GenericAdapter<T extends BaseModel, L extends IGenericBase
 
     }
 
-    public GenericAdapter(Context context, L listener, RelativeLayout emptyView) {
+    public GenericAdapter(Context context, L listener, ViewGroup emptyView) {
         this.listener = listener;
         this.items = new ArrayList<>();
         this.itemsFilter = new ArrayList<>();
