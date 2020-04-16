@@ -22,7 +22,8 @@ import java.util.List;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
-public class MainActivity extends AppCompatActivity implements IOnItemClickListener, IOnSwipe, AdapterView.OnItemSelectedListener {
+public class MainActivity extends AppCompatActivity implements IOnItemClickListener<TestModel>, IOnSwipe,
+        AdapterView.OnItemSelectedListener {
 
     private static final String TAG = "MainActivity";
     @BindView(R.id.generic_recylerview)
@@ -100,10 +101,6 @@ public class MainActivity extends AppCompatActivity implements IOnItemClickListe
 
     }
 
-    @Override
-    public void onItemClicked(Object item, int positon) {
-        Log.d(TAG, "onItemClicked:Position:" + positon);
-    }
 
     @Override
     public void OnSwipe(Object item, int position, int direction) {
@@ -135,6 +132,11 @@ public class MainActivity extends AppCompatActivity implements IOnItemClickListe
 
     @Override
     public void onNothingSelected(AdapterView<?> adapterView) {
+
+    }
+
+    @Override
+    public void onItemClicked(TestModel item, int positon) {
 
     }
 }
