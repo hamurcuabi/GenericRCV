@@ -7,9 +7,6 @@ import com.emrhmrc.genericrecycler.models.BaseModel;
 import java.util.ArrayList;
 import java.util.List;
 
-/**
- * @param <T>
- */
 public class BaseFilterAdapter<T extends BaseModel> extends Filter {
     List<T> filterList;
     GenericAdapter adapter;
@@ -29,8 +26,7 @@ public class BaseFilterAdapter<T extends BaseModel> extends Filter {
             List<T> filtered = new ArrayList<>();
 
             for (int i = 0; i < adapter.getItemsFilter().size(); i++) {
-                if (((T) adapter.getItemsFilter().get(i)).getFilterName().toLowerCase().contains(constraint)) {
-                    //ADD DATA TO FILTERED DATA
+                if (((T) adapter.getItemsFilter().get(i)).getGenericFilterText().toLowerCase().contains(constraint)) {
                     filtered.add((T) adapter.getItemsFilter().get(i));
                 }
 

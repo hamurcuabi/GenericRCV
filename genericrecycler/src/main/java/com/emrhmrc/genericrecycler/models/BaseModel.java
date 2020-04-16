@@ -5,23 +5,23 @@ import com.google.gson.annotations.Expose;
 public class BaseModel {
 
     @Expose
-    private String filterName = "";
+    private String genericFilterText = "";
     @Expose
-    private boolean checked;
+    private boolean genericChecked;
 
-    public String getFilterName() {
-        return filterName;
+    public String getGenericFilterText() {
+        return genericFilterText;
     }
 
-    public void setFilterName(String filterName) {
-        this.filterName = filterName;
+    public void setGenericFilterText(String genericFilterText) {
+        this.genericFilterText = genericFilterText;
     }
 
-    public boolean isChecked() {
-        return checked;
+    public boolean isGenericChecked() {
+        return genericChecked;
     }
 
-    public void setChecked(boolean checked) {
-        this.checked = checked;
+    public void setGenericChecked(boolean genericChecked) {
+        this.genericChecked = genericChecked;
     }
 }

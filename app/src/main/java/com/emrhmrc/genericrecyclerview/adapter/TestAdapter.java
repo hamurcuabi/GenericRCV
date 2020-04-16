@@ -5,7 +5,6 @@ import android.view.LayoutInflater;
 import android.view.ViewGroup;
 import android.widget.Filter;
 import android.widget.Filterable;
-import android.widget.RelativeLayout;
 
 import androidx.databinding.DataBindingUtil;
 
@@ -21,16 +20,15 @@ public class TestAdapter extends GenericAdapter<TestModel,
         TestViewHolder> implements Filterable {
 
 
-    public TestAdapter(Context context, IOnItemClickListener listener, RelativeLayout emptyView) {
+    public TestAdapter(Context context, IOnItemClickListener listener, ViewGroup emptyView) {
         super(context, listener, emptyView);
     }
 
     @Override
     public TestViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-
         ItemTestBinding binding = DataBindingUtil.inflate(
                 LayoutInflater.from(parent.getContext()),
-                R.layout.item_test, parent, false);
+                viewType, parent, false);
         return new TestViewHolder(binding);
 
     }
@@ -39,12 +37,12 @@ public class TestAdapter extends GenericAdapter<TestModel,
     @Override
     public int getItemViewType(int position) {
         final TestModel item = getItem(position);
-        return position;
+        return R.layout.item_test;
     }
 
     @Override
     public Filter getFilter() {
-        return new BaseFilterAdapter<TestModel>(this, this.getItemsFilter());
+        return new BaseFilterAdapter<>(this, this.getItemsFilter());
     }
 
 

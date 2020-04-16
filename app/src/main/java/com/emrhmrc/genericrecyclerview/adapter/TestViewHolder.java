@@ -8,8 +8,6 @@ import com.emrhmrc.genericrecycler.interfaces.IOnItemClickListener;
 import com.emrhmrc.genericrecyclerview.TestModel;
 import com.emrhmrc.genericrecyclerview.databinding.ItemTestBinding;
 
-import butterknife.ButterKnife;
-
 public class TestViewHolder extends BaseViewHolder<TestModel,
         IOnItemClickListener<TestModel>> {
 
@@ -17,9 +15,7 @@ public class TestViewHolder extends BaseViewHolder<TestModel,
 
     public TestViewHolder(ItemTestBinding binding) {
         super(binding.getRoot());
-        ButterKnife.bind(this, binding.getRoot());
         this.binding = binding;
-
     }
 
 
@@ -27,7 +23,6 @@ public class TestViewHolder extends BaseViewHolder<TestModel,
     public void onBind(final TestModel item, final @Nullable
             IOnItemClickListener<TestModel> listener) {
         binding.setItem(item);
-
 
     }
 

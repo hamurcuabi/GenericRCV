@@ -2,6 +2,7 @@ package com.emrhmrc.genericrecycler.adapters;
 
 import android.view.View;
 
+import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -9,15 +10,11 @@ import com.emrhmrc.genericrecycler.interfaces.IGenericBaseRecyclerListener;
 
 import java.util.List;
 
-/**
- * @param <T>
- * @param <L>
- */
 public abstract class BaseViewHolder<T, L extends IGenericBaseRecyclerListener> extends RecyclerView.ViewHolder {
 
     private L listener;
 
-    public BaseViewHolder(View itemView) {
+    public BaseViewHolder(@NonNull View itemView) {
         super(itemView);
     }
 

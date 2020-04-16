@@ -23,7 +23,6 @@ public class BaseAdapterSwipe extends ItemTouchHelper.SimpleCallback {
     private IOnSwipe iOnSwipe;
 
     public BaseAdapterSwipe(GenericAdapter adapter, IOnSwipe iOnSwipe) {
-        //hangi yönlerde swipe var
         super(0, ItemTouchHelper.RIGHT | ItemTouchHelper.LEFT);
         mAdapter = adapter;
         icon_left = ContextCompat.getDrawable(mAdapter.getContext(),
@@ -41,9 +40,6 @@ public class BaseAdapterSwipe extends ItemTouchHelper.SimpleCallback {
 
     @Override
     public void onSwiped(@NonNull RecyclerView.ViewHolder viewHolder, int i) {
-
-        //işlem bitince ne olsun
-        //mAdapter.remove(viewHolder.getAdapterPosition());
         iOnSwipe.OnSwipe(mAdapter.getItem(viewHolder.getAdapterPosition()), viewHolder.getAdapterPosition(), i);
         mAdapter.notifyItemChanged(viewHolder.getAdapterPosition());
     }
