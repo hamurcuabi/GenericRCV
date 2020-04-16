@@ -5,7 +5,6 @@ import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
-import android.widget.RelativeLayout;
 import android.widget.Spinner;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -28,8 +27,6 @@ public class MainActivity extends AppCompatActivity implements IOnItemClickListe
     private static final String TAG = "MainActivity";
     @BindView(R.id.generic_recylerview)
     RecyclerView recyclerView;
-    @BindView(R.id.empty_view)
-    RelativeLayout emptyView;
     @BindView(R.id.searchView)
     SearchView searchView;
     @BindView(R.id.spinner)
@@ -90,7 +87,7 @@ public class MainActivity extends AppCompatActivity implements IOnItemClickListe
             TestModel testModel = new TestModel();
             testModel.setCount(i + 1);
             testModel.setHeader("Header-" + i + 1);
-            testModel.setFilterName("Header-" + i + 1);
+            testModel.setGenericFilterText("Header-" + i + 1);
             testModelList.add(testModel);
         }
         testAdapter.setItems(testModelList);
@@ -98,8 +95,8 @@ public class MainActivity extends AppCompatActivity implements IOnItemClickListe
     }
 
     private void setAdapter() {
-        testAdapter = new TestAdapter(this, this, emptyView);
-        GRVHelper.setupWithSwipe(testAdapter, recyclerView, this);
+        testAdapter = new TestAdapter(this, this, null);
+        GRVHelper.setup(testAdapter, recyclerView);
 
     }
 

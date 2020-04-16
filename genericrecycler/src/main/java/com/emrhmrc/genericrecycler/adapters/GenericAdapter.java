@@ -1,12 +1,9 @@
 package com.emrhmrc.genericrecycler.adapters;
 
 import android.content.Context;
-import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import androidx.annotation.LayoutRes;
-import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.recyclerview.widget.DiffUtil;
 import androidx.recyclerview.widget.RecyclerView;
@@ -23,51 +20,46 @@ public abstract class GenericAdapter<T extends BaseModel, L extends IGenericBase
     private List<T> items;
     private List<T> itemsFilter;
     private L listener;
-    private LayoutInflater layoutInflater;
     private Context context;
     private ViewGroup emptyView;
 
-
-    @Deprecated
-    public GenericAdapter(Context context) {
-        layoutInflater = LayoutInflater.from(context);
-        items = new ArrayList<>();
-        if (isEmpty())
-            showEmptyView();
-        else
-            hideEmptyView();
-
-    }
-
-    public GenericAdapter(Context context, L listener, ViewGroup emptyView) {
+    public GenericAdapter(Context context, L listener, @Nullable ViewGroup emptyView) {
         this.listener = listener;
         this.items = new ArrayList<>();
         this.itemsFilter = new ArrayList<>();
-        this.layoutInflater = LayoutInflater.from(context);
         this.context = context;
         this.emptyView = emptyView;
+    }
+
+    @Override
+    public void onBindViewHolder(VH holder, int position) {
+        T item = items.get(position);
+        holder.onBind(item, listener);
+    }
+
+    @Override
+    abstract public int getItemViewType(int position);
+
+    @Override
+    public int getItemCount() {
+        return items != null ? items.size() : 0;
+    }
+
+    @Override
+    public void setHasStableIds(boolean hasStableIds) {
+        super.setHasStableIds(hasStableIds);
     }
 
     public Context getContext() {
         return context;
     }
 
-    @Override
-    public abstract VH onCreateViewHolder(ViewGroup parent, int viewType);
-
-    @Override
-    public void onBindViewHolder(VH holder, int position) {
-        if (items.size() <= position) {
-            return;
-        }
-        T item = items.get(position);
-        holder.onBind(item, listener);
-
+    public void updateItem(T item, int position) {
+        notifyItemChanged(position, item);
     }
 
-    @Override
-    public int getItemCount() {
-        return items != null ? items.size() : 0;
+    public void updateItem(int position) {
+        notifyItemChanged(position);
     }
 
     public int getFilterItemCount() {
@@ -83,10 +75,7 @@ public abstract class GenericAdapter<T extends BaseModel, L extends IGenericBase
         if (notifyChanges) {
             notifyDataSetChanged();
         }
-        if (isEmpty())
-            showEmptyView();
-        else
-            hideEmptyView();
+        setVisibiltity();
     }
 
     public void updateItems(List<T> newItems) {
@@ -100,26 +89,17 @@ public abstract class GenericAdapter<T extends BaseModel, L extends IGenericBase
     }
 
     public List<T> getItemsFilter() {
-        if (isFilterEmpty())
-            showEmptyView();
-        else
-            hideEmptyView();
+        setVisibiltity();
         return itemsFilter;
     }
 
     public void setItemsFilter(List<T> itemsFilter) {
         this.itemsFilter = itemsFilter;
-        if (isFilterEmpty())
-            showEmptyView();
-        else
-            hideEmptyView();
+        setVisibiltity();
     }
 
     public List<T> getItems() {
-        if (isEmpty())
-            showEmptyView();
-        else
-            hideEmptyView();
+        setVisibiltity();
         return items;
     }
 
@@ -142,12 +122,12 @@ public abstract class GenericAdapter<T extends BaseModel, L extends IGenericBase
 
     }
 
-    public void addToBeginning(T item) {
+    public void addToPlace(T item, int place) {
         if (item == null) {
             throw new IllegalArgumentException("Cannot add null item to the Recycler adapter");
         }
-        items.add(0, item);
-        notifyItemInserted(0);
+        items.add(place, item);
+        notifyItemInserted(place);
         hideEmptyView();
     }
 
@@ -171,20 +151,14 @@ public abstract class GenericAdapter<T extends BaseModel, L extends IGenericBase
             items.remove(position);
             notifyItemRemoved(position);
         }
-        if (isEmpty())
-            showEmptyView();
-        else
-            hideEmptyView();
+        setVisibiltity();
     }
 
     public void remove(int position) {
         if (position > -1) {
             items.remove(position);
             notifyItemRemoved(position);
-            if (isEmpty())
-                showEmptyView();
-            else
-                hideEmptyView();
+            setVisibiltity();
         }
     }
 
@@ -197,36 +171,21 @@ public abstract class GenericAdapter<T extends BaseModel, L extends IGenericBase
         return getFilterItemCount() == 0;
     }
 
-    @Override
-    public void setHasStableIds(boolean hasStableIds) {
-        super.setHasStableIds(hasStableIds);
-    }
-
-    public L getListener() {
-        return listener;
-    }
-
-    public void setListener(L listener) {
-        this.listener = listener;
-    }
-
-    @NonNull
-    protected View inflate(@LayoutRes final int layout, @Nullable final ViewGroup parent, final boolean attachToRoot) {
-        return layoutInflater.inflate(layout, parent, attachToRoot);
-    }
-
-    @NonNull
-    protected View inflate(@LayoutRes final int layout, final @Nullable ViewGroup parent) {
-        return inflate(layout, parent, false);
-    }
-
     private void showEmptyView() {
-        emptyView.setVisibility(View.VISIBLE);
+        if (emptyView != null)
+            emptyView.setVisibility(View.VISIBLE);
     }
 
     private void hideEmptyView() {
-        emptyView.setVisibility(View.GONE);
+        if (emptyView != null)
+            emptyView.setVisibility(View.GONE);
     }
 
+    private void setVisibiltity() {
+        if (isEmpty())
+            showEmptyView();
+        else
+            hideEmptyView();
+    }
 
 }
