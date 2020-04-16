@@ -18,10 +18,10 @@ public abstract class BaseViewHolder<T, L extends IGenericBaseRecyclerListener> 
         super(itemView);
     }
 
-    public abstract void onBind(T item, @Nullable L listener);
+    public abstract void onBind(T item, @Nullable L listener, int position);
 
-    public void onBind(T item, List<Object> payloads) {
-        onBind(item, listener);
+    public void onBind(T item, List<Object> payloads, int position) {
+        onBind(item, listener, position);
     }
 
     protected L getListener() {

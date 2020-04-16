@@ -21,7 +21,7 @@ public class TestViewHolder extends BaseViewHolder<TestModel,
 
     @Override
     public void onBind(final TestModel item, final @Nullable
-            IOnItemClickListener<TestModel> listener) {
+            IOnItemClickListener<TestModel> listener, int position) {
         binding.setItem(item);
 
     }

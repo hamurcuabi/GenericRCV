@@ -34,7 +34,7 @@ public abstract class GenericAdapter<T extends BaseModel, L extends IGenericBase
     @Override
     public void onBindViewHolder(VH holder, int position) {
         T item = items.get(position);
-        holder.onBind(item, listener);
+        holder.onBind(item, listener, position);
     }
 
     @Override
