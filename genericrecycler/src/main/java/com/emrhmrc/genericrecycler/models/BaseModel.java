@@ -2,8 +2,8 @@ package com.emrhmrc.genericrecycler.models;
 
 import androidx.databinding.BaseObservable;
 import androidx.databinding.Bindable;
+import androidx.databinding.library.baseAdapters.BR;
 
-import com.emrhmrc.genericrecycler.BR;
 import com.google.gson.annotations.Expose;
 
 public class BaseModel extends BaseObservable {
@@ -14,6 +14,7 @@ public class BaseModel extends BaseObservable {
     private boolean genericChecked;
 
 
+    @Bindable
     public String getGenericFilterText() {
         return genericFilterText;
     }
@@ -29,6 +30,6 @@ public class BaseModel extends BaseObservable {
 
     public void setGenericChecked(boolean genericChecked) {
         this.genericChecked = genericChecked;
-        notifyPropertyChanged(BR._all);
+        notifyPropertyChanged(BR.genericChecked);
     }
 }
