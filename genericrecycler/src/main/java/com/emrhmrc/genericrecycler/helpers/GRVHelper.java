@@ -53,6 +53,20 @@ public class GRVHelper {
 
     }
 
+    public static void setupWithSwipe(GenericAdapter adapter,
+                                      @NonNull RecyclerView recyclerView,
+                                      ItemTouchHelper.SimpleCallback swipeAdapter
+    ) {
+        recyclerView.setLayoutManager(new LinearLayoutManager(recyclerView.getContext()));
+        recyclerView.setItemAnimator(new DefaultItemAnimator());
+        recyclerView.setHasFixedSize(true);
+        recyclerView.setAdapter(adapter);
+        animation = AnimationUtils.loadLayoutAnimation(recyclerView.getContext(), resId);
+        recyclerView.setLayoutAnimation(animation);
+        ItemTouchHelper itemTouchhelper = new ItemTouchHelper(swipeAdapter);
+        itemTouchhelper.attachToRecyclerView(recyclerView);
+
+    }
     public static int getResId() {
         return resId;
     }
