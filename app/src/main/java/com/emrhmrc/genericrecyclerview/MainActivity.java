@@ -15,6 +15,7 @@ import com.emrhmrc.genericrecycler.helpers.GRVHelper;
 import com.emrhmrc.genericrecycler.interfaces.IOnItemClickListener;
 import com.emrhmrc.genericrecycler.interfaces.IOnSwipe;
 import com.emrhmrc.genericrecyclerview.adapter.TestAdapter;
+import com.emrhmrc.genericrecyclerview.adapter.TestAdapterSwipe;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -96,8 +97,10 @@ public class MainActivity extends AppCompatActivity implements IOnItemClickListe
     }
 
     private void setAdapter() {
+
         testAdapter = new TestAdapter(this, this, null);
-        GRVHelper.setup(testAdapter, recyclerView);
+        TestAdapterSwipe swipe = new TestAdapterSwipe(testAdapter, this);
+        GRVHelper.setupWithSwipe(testAdapter, recyclerView, swipe);
 
     }
 

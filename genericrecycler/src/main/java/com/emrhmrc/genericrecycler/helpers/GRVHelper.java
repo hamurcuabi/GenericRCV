@@ -54,7 +54,7 @@ public class GRVHelper {
     }
 
     public static void setupWithSwipe(GenericAdapter adapter,
-                                      @NonNull RecyclerView recyclerView, IOnSwipe iOnSwipe,
+                                      @NonNull RecyclerView recyclerView,
                                       ItemTouchHelper.SimpleCallback swipeAdapter
     ) {
         recyclerView.setLayoutManager(new LinearLayoutManager(recyclerView.getContext()));
