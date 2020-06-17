@@ -90,9 +90,8 @@ public class MainActivity extends AppCompatActivity implements IOnItemClickListe
             testModel.setCount(i + 1);
             testModel.setHeader("Header-" + i + 1);
             testModel.setGenericFilterText("Header-" + i + 1);
-            testModelList.add(testModel);
+            testAdapter.add(testModel);
         }
-        testAdapter.setItems(testModelList);
 
     }
 
@@ -108,6 +107,9 @@ public class MainActivity extends AppCompatActivity implements IOnItemClickListe
     @Override
     public void OnSwipe(Object item, int position, int direction) {
         Log.d(TAG, "OnSwipe:Position:" + position + " Direction:" + direction);
+        testAdapter.notifyItemChanged(position);
+        /*testAdapter.remove(position);
+        testAdapter.notifyItemRemoved(position);*/
     }
 
     @Override
