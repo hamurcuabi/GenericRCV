@@ -98,6 +98,16 @@ public abstract class GenericAdapter<T extends BaseModel, L extends IGenericBase
         setVisibiltity();
     }
 
+    private void addItemToFilter(T item) {
+        this.itemsFilter.add(item);
+        setVisibiltity();
+    }
+
+    private void removeItemToFilter(T item) {
+        this.itemsFilter.remove(item);
+        setVisibiltity();
+    }
+
     public List<T> getItems() {
         setVisibiltity();
         return items;
@@ -118,6 +128,7 @@ public abstract class GenericAdapter<T extends BaseModel, L extends IGenericBase
             throw new IllegalArgumentException("Cannot add null item to the Recycler adapter");
         }
         items.add(item);
+        addItemToFilter(item);
         notifyItemInserted(items.size() - 1);
 
     }
@@ -159,6 +170,7 @@ public abstract class GenericAdapter<T extends BaseModel, L extends IGenericBase
             items.remove(position);
             notifyItemRemoved(position);
             setVisibiltity();
+            removeItemToFilter(items.get(position));
         }
     }
 

@@ -40,7 +40,7 @@ public class TestAdapterSwipe extends ItemTouchHelper.SimpleCallback {
     public void onSwiped(@NonNull RecyclerView.ViewHolder viewHolder, int i) {
         iOnSwipe.OnSwipe(mAdapter.getItem(viewHolder.getAbsoluteAdapterPosition()),
                 viewHolder.getAbsoluteAdapterPosition(), i);
-        mAdapter.notifyItemChanged(viewHolder.getAbsoluteAdapterPosition());
+        // mAdapter.notifyItemChanged(viewHolder.getAbsoluteAdapterPosition());
     }
 
     @Override
