@@ -1,9 +1,8 @@
 package com.emrhmrc.genericrecyclerview;
 
-import com.emrhmrc.genericrecycler.models.BaseModel;
+import com.emrhmrc.genericrecycler.interfaces.BaseModel;
 
-public class TestModel extends BaseModel {
-
+public class TestModel implements BaseModel {
     private int Id;
     private String header;
     private int count;
@@ -39,5 +38,19 @@ public class TestModel extends BaseModel {
 
     public void setCount(int count) {
         this.count = count;
+    }
+
+    @Override
+    public String toString() {
+        return "TestModel{" +
+                "Id=" + Id +
+                ", header='" + header + '\'' +
+                ", count=" + count +
+                '}';
+    }
+
+    @Override
+    public String getFilterText() {
+        return header;
     }
 }

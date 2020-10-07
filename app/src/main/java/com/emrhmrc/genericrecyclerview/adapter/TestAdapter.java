@@ -16,8 +16,7 @@ import com.emrhmrc.genericrecyclerview.TestModel;
 import com.emrhmrc.genericrecyclerview.databinding.ItemTestBinding;
 
 public class TestAdapter extends GenericAdapter<TestModel,
-        IOnItemClickListener<TestModel>,
-        TestViewHolder> implements Filterable {
+        IOnItemClickListener<TestModel>, TestViewHolder> implements Filterable {
 
 
     public TestAdapter(Context context, IOnItemClickListener listener, ViewGroup emptyView) {
@@ -38,12 +37,12 @@ public class TestAdapter extends GenericAdapter<TestModel,
     public int getItemViewType(int position) {
         final TestModel item = getItem(position);
         return R.layout.item_test;
+
     }
 
     @Override
     public Filter getFilter() {
         return new BaseFilterAdapter<>(this, this.getItemsFilter());
     }
-
 
 }

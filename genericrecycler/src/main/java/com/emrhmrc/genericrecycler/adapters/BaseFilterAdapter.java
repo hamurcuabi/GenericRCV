@@ -2,7 +2,7 @@ package com.emrhmrc.genericrecycler.adapters;
 
 import android.widget.Filter;
 
-import com.emrhmrc.genericrecycler.models.BaseModel;
+import com.emrhmrc.genericrecycler.interfaces.BaseModel;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -26,7 +26,7 @@ public class BaseFilterAdapter<T extends BaseModel> extends Filter {
             List<T> filtered = new ArrayList<>();
 
             for (int i = 0; i < adapter.getItemsFilter().size(); i++) {
-                if (((T) adapter.getItemsFilter().get(i)).getGenericFilterText().toLowerCase().contains(constraint)) {
+                if (((T) adapter.getItemsFilter().get(i)).getFilterText().toLowerCase().contains(constraint)) {
                     filtered.add((T) adapter.getItemsFilter().get(i));
                 }
 

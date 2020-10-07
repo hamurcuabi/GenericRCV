@@ -4,12 +4,12 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <FrameLayout
+        android:id="@+id/root"
         android:layout_width="match_parent"
-        android:layout_height="?android:attr/listPreferredItemHeightLarge"
-        android:layout_marginStart="@dimen/margin_small"
-        android:layout_marginEnd="@dimen/margin_small"
-        android:background="?android:attr/selectableItemBackground"
-        android:theme="@style/AppTheme.BaseMaterial">
+        android:layout_height="wrap_content"
+        android:layout_margin="8dp"
+        android:clickable="true"
+        android:focusable="true">
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"

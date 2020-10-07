@@ -1,6 +1,7 @@
 package com.emrhmrc.genericrecycler.adapters;
 
 import android.content.Context;
+import android.graphics.Color;
 import android.view.View;
 import android.view.ViewGroup;
 
@@ -8,14 +9,21 @@ import androidx.annotation.Nullable;
 import androidx.recyclerview.widget.DiffUtil;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.emrhmrc.genericrecycler.interfaces.BaseModel;
 import com.emrhmrc.genericrecycler.interfaces.IGenericBaseRecyclerListener;
-import com.emrhmrc.genericrecycler.models.BaseModel;
+import com.emrhmrc.genericrecycler.interfaces.ItemDragHelper;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 
-public abstract class GenericAdapter<T extends BaseModel, L extends IGenericBaseRecyclerListener, VH extends BaseViewHolder<T, L>> extends RecyclerView.Adapter<VH> {
+public abstract class GenericAdapter<
+        T extends BaseModel,
+        L extends IGenericBaseRecyclerListener,
+        VH extends BaseViewHolder<T, L>
+        >
+        extends RecyclerView.Adapter<VH> implements ItemDragHelper {
 
     private List<T> items;
     private List<T> itemsFilter;
@@ -198,6 +206,32 @@ public abstract class GenericAdapter<T extends BaseModel, L extends IGenericBase
             showEmptyView();
         else
             hideEmptyView();
+    }
+
+    @Override
+    public void onRowMoved(int fromPosition, int toPosition) {
+        if (fromPosition < toPosition) {
+            for (int i = fromPosition; i < toPosition; i++) {
+                Collections.swap(items, i, i + 1);
+            }
+        } else {
+            for (int i = fromPosition; i > toPosition; i--) {
+                Collections.swap(items, i, i - 1);
+            }
+        }
+        notifyItemMoved(fromPosition, toPosition);
+    }
+
+    @Override
+    public void onRowSelected(BaseViewHolder myViewHolder) {
+        myViewHolder.itemView.setBackgroundColor(Color.GRAY);
+
+    }
+
+    @Override
+    public void onRowClear(BaseViewHolder myViewHolder) {
+        myViewHolder.itemView.setBackgroundColor(Color.WHITE);
+
     }
 
 }

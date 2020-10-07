@@ -20,10 +20,12 @@ public class TestViewHolder extends BaseViewHolder<TestModel,
 
 
     @Override
-    public void onBind(final TestModel item, final @Nullable
-            IOnItemClickListener<TestModel> listener, int position) {
-        binding.setItem(item);
+    public void onBind(final TestModel item, final @Nullable IOnItemClickListener<TestModel> listener, int position) {
 
+        binding.setItem(item);
+        binding.materialTextView.setOnClickListener(view ->
+                listener.onItemClicked(item, position)
+        );
     }
 
 

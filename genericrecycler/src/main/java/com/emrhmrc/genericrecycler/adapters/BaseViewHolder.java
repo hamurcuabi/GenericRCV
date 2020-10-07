@@ -11,7 +11,6 @@ import com.emrhmrc.genericrecycler.interfaces.IGenericBaseRecyclerListener;
 import java.util.List;
 
 public abstract class BaseViewHolder<T, L extends IGenericBaseRecyclerListener> extends RecyclerView.ViewHolder {
-
     private L listener;
 
     public BaseViewHolder(@NonNull View itemView) {
@@ -27,5 +26,4 @@ public abstract class BaseViewHolder<T, L extends IGenericBaseRecyclerListener> 
     protected L getListener() {
         return listener;
     }
-
 }
