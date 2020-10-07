@@ -76,6 +76,7 @@ public class GRVHelper {
         RecyclerSectionItemDecoration sectionItemDecoration =
                 new RecyclerSectionItemDecoration(Utils.pxFromDp(recyclerView.getContext(), 32f),
                         isSticky,
+                        R.layout.recycler_section_header,
                         new RecyclerSectionItemDecoration.SectionCallback() {
                             @Override
                             public boolean isSection(int position) {

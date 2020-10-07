@@ -6,6 +6,7 @@ import android.view.ViewGroup;
 import android.widget.Filter;
 import android.widget.Filterable;
 
+import androidx.annotation.NonNull;
 import androidx.databinding.DataBindingUtil;
 
 import com.emrhmrc.genericrecycler.adapters.BaseFilterAdapter;
@@ -23,8 +24,9 @@ public class TestAdapter extends GenericAdapter<TestModel,
         super(context, listener, emptyView);
     }
 
+    @NonNull
     @Override
-    public TestViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+    public TestViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         ItemTestBinding binding = DataBindingUtil.inflate(
                 LayoutInflater.from(parent.getContext()),
                 viewType, parent, false);

@@ -21,14 +21,16 @@ public class RecyclerSectionItemDecoration extends RecyclerView.ItemDecoration {
     private final int headerOffset;
     private final boolean sticky;
     private final SectionCallback sectionCallback;
+    private int layoutId;
 
     private View headerView;
     private TextView header;
 
-    public RecyclerSectionItemDecoration(int headerHeight, boolean sticky, @NonNull SectionCallback sectionCallback) {
+    public RecyclerSectionItemDecoration(int headerHeight, boolean sticky, int layoutId, @NonNull SectionCallback sectionCallback) {
         headerOffset = headerHeight;
         this.sticky = sticky;
         this.sectionCallback = sectionCallback;
+        this.layoutId = layoutId;
 
     }
 
@@ -89,10 +91,7 @@ public class RecyclerSectionItemDecoration extends RecyclerView.ItemDecoration {
     }
 
     private View inflateHeaderView(RecyclerView parent) {
-        return LayoutInflater.from(parent.getContext())
-                .inflate(R.layout.recycler_section_header,
-                        parent,
-                        false);
+        return LayoutInflater.from(parent.getContext()).inflate(layoutId, parent, false);
     }
 
     private void fixLayoutSize(View view, ViewGroup parent) {
