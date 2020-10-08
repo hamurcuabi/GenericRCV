@@ -50,24 +50,8 @@ public class ExampleBottomSheetDialog extends BottomSheetDialogFragment implemen
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         setAdapter();
         prepareData();
-        GRVHelper.setAlphabeticSection(testModelList, binding.genericRecylerview, true);
-      /*  binding.genericRecylerview.addOnItemTouchListener(new RecyclerView.OnItemTouchListener() {
-            public boolean onInterceptTouchEvent(RecyclerView recyclerView, MotionEvent motionEvent) {
-                if (motionEvent.getY() <= 32) {
-                    // Handle the clicks on the header here ...
-                    return true;
-                }
-                return false;
-            }
-
-            public void onTouchEvent(RecyclerView recyclerView, MotionEvent motionEvent) {
-
-            }
-
-            public void onRequestDisallowInterceptTouchEvent(boolean disallowIntercept) {
-
-            }
-        });*/
+        // GRVHelper.setAlphabeticSection(testModelList, binding.genericRecylerview, true);
+        //GRVHelper.setSnap(SnapGravity.START, binding.genericRecylerview, 1, 100);
     }
 
 

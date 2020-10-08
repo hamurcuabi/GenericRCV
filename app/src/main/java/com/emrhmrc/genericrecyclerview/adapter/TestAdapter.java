@@ -14,7 +14,7 @@ import com.emrhmrc.genericrecycler.adapters.GenericAdapter;
 import com.emrhmrc.genericrecycler.interfaces.IOnItemClickListener;
 import com.emrhmrc.genericrecyclerview.R;
 import com.emrhmrc.genericrecyclerview.TestModel;
-import com.emrhmrc.genericrecyclerview.databinding.ItemTestBinding;
+import com.emrhmrc.genericrecyclerview.databinding.ListItemLeftRightBinding;
 
 public class TestAdapter extends GenericAdapter<TestModel,
         IOnItemClickListener<TestModel>, TestViewHolder> implements Filterable {
@@ -27,7 +27,7 @@ public class TestAdapter extends GenericAdapter<TestModel,
     @NonNull
     @Override
     public TestViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        ItemTestBinding binding = DataBindingUtil.inflate(
+        ListItemLeftRightBinding binding = DataBindingUtil.inflate(
                 LayoutInflater.from(parent.getContext()),
                 viewType, parent, false);
         return new TestViewHolder(binding);
@@ -38,9 +38,10 @@ public class TestAdapter extends GenericAdapter<TestModel,
     @Override
     public int getItemViewType(int position) {
         final TestModel item = getItem(position);
-        return R.layout.item_test;
+        return R.layout.list_item_left_right;
 
     }
+
 
     @Override
     public Filter getFilter() {

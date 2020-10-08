@@ -14,6 +14,8 @@ import com.emrhmrc.genericrecycler.adapters.BaseSwipeDragAdapter;
 import com.emrhmrc.genericrecycler.adapters.GenericAdapter;
 import com.emrhmrc.genericrecycler.interfaces.BaseModel;
 import com.emrhmrc.genericrecycler.interfaces.IOnSwipe;
+import com.emrhmrc.genericrecycler.multisnap.MultiSnapHelper;
+import com.emrhmrc.genericrecycler.multisnap.SnapGravity;
 import com.emrhmrc.genericrecycler.util.Utils;
 
 import java.util.List;
@@ -51,8 +53,7 @@ public class GRVHelper {
         recyclerView.setAdapter(adapter);
         animation = AnimationUtils.loadLayoutAnimation(recyclerView.getContext(), resId);
         recyclerView.setLayoutAnimation(animation);
-        ItemTouchHelper itemTouchhelper = new ItemTouchHelper(new BaseSwipeDragAdapter(adapter,
-                iOnSwipe, swipeDirs));
+        ItemTouchHelper itemTouchhelper = new ItemTouchHelper(new BaseSwipeDragAdapter(adapter, iOnSwipe, swipeDirs));
         itemTouchhelper.attachToRecyclerView(recyclerView);
 
     }
@@ -96,6 +97,12 @@ public class GRVHelper {
                             }
                         });
         recyclerView.addItemDecoration(sectionItemDecoration);
+    }
+
+    public static MultiSnapHelper setSnap(SnapGravity snapGravity, RecyclerView recyclerView, int interval, int speed) {
+        MultiSnapHelper multiSnapHelper = new MultiSnapHelper(snapGravity, interval, speed);
+        multiSnapHelper.attachToRecyclerView(recyclerView);
+        return multiSnapHelper;
     }
 
     public static int getResId() {

@@ -16,11 +16,11 @@ public class TestSwipeDragAdapter extends BaseSwipeDragAdapter {
 
     @Override
     public boolean isLongPressDragEnabled() {
-        return true;
+        return false;
     }
 
     @Override
     public boolean isItemViewSwipeEnabled() {
-        return false;
+        return true;
     }
 }
