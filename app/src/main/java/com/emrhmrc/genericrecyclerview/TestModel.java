@@ -1,11 +1,14 @@
 package com.emrhmrc.genericrecyclerview;
 
+import androidx.annotation.NonNull;
+
 import com.emrhmrc.genericrecycler.interfaces.BaseModel;
 
 public class TestModel implements BaseModel {
     private int Id;
     private String header;
     private int count;
+    private int offSet;
 
     public TestModel(int Id, String header, int count) {
         this.header = header;
@@ -14,6 +17,14 @@ public class TestModel implements BaseModel {
     }
 
     public TestModel() {
+    }
+
+    public int getOffSet() {
+        return offSet;
+    }
+
+    public void setOffSet(int offSet) {
+        this.offSet = offSet;
     }
 
     public int getId() {
@@ -40,6 +51,7 @@ public class TestModel implements BaseModel {
         this.count = count;
     }
 
+    @NonNull
     @Override
     public String toString() {
         return "TestModel{" +

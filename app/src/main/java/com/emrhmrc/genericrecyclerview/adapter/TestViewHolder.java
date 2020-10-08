@@ -5,7 +5,6 @@ import android.util.Log;
 import android.widget.Toast;
 
 import androidx.annotation.Nullable;
-import androidx.recyclerview.widget.RecyclerView;
 
 import com.emrhmrc.genericrecycler.adapters.BaseViewHolder;
 import com.emrhmrc.genericrecycler.interfaces.IOnItemClickListener;
@@ -29,9 +28,7 @@ public class TestViewHolder extends BaseViewHolder<TestModel,
 
     @Override
     public void onBind(final TestModel item, final @Nullable IOnItemClickListener<TestModel> listener, int position) {
-        if (getAbsoluteAdapterPosition() != RecyclerView.NO_POSITION) {
-            binding.swipeLayout.setOffset(binding.swipeLayout.getOffset());
-        }
+        binding.swipeLayout.setOffset(item.getOffSet());
         binding.setItem(item);
         binding.materialTextView.setOnClickListener(view ->
                 listener.onItemClicked(item, position)
@@ -41,7 +38,6 @@ public class TestViewHolder extends BaseViewHolder<TestModel,
     }
 
     private void setSwipes(ListItemLeftRightBinding binding) {
-
 
         binding.swipeLayout.setOnSwipeListener(new SwipeLayout.OnSwipeListener() {
             @Override

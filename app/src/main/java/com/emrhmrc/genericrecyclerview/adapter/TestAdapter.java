@@ -8,6 +8,7 @@ import android.widget.Filterable;
 
 import androidx.annotation.NonNull;
 import androidx.databinding.DataBindingUtil;
+import androidx.recyclerview.widget.RecyclerView;
 
 import com.emrhmrc.genericrecycler.adapters.BaseFilterAdapter;
 import com.emrhmrc.genericrecycler.adapters.GenericAdapter;
@@ -19,10 +20,10 @@ import com.emrhmrc.genericrecyclerview.databinding.ListItemLeftRightBinding;
 public class TestAdapter extends GenericAdapter<TestModel,
         IOnItemClickListener<TestModel>, TestViewHolder> implements Filterable {
 
-
     public TestAdapter(Context context, IOnItemClickListener listener, ViewGroup emptyView) {
         super(context, listener, emptyView);
     }
+
 
     @NonNull
     @Override
@@ -42,10 +43,17 @@ public class TestAdapter extends GenericAdapter<TestModel,
 
     }
 
-
     @Override
     public Filter getFilter() {
         return new BaseFilterAdapter<>(this, this.getItemsFilter());
     }
 
+    //This is for swipe layout
+    @Override
+    public void onViewDetachedFromWindow(@NonNull TestViewHolder holder) {
+        if (holder.getAbsoluteAdapterPosition() != RecyclerView.NO_POSITION) {
+            holder.getBinding().getItem().setOffSet(holder.getBinding().swipeLayout.getOffset());
+        }
+
+    }
 }
