@@ -28,6 +28,7 @@ public class TestViewHolder extends BaseViewHolder<TestModel,
 
     @Override
     public void onBind(final TestModel item, final @Nullable IOnItemClickListener<TestModel> listener, int position) {
+        //Has to write this
         binding.swipeLayout.setOffset(item.getOffSet());
         binding.setItem(item);
         binding.materialTextView.setOnClickListener(view ->
@@ -37,6 +38,7 @@ public class TestViewHolder extends BaseViewHolder<TestModel,
         setSwipes(binding);
     }
 
+    //For Swiping
     private void setSwipes(ListItemLeftRightBinding binding) {
 
         binding.swipeLayout.setOnSwipeListener(new SwipeLayout.OnSwipeListener() {
