@@ -22,8 +22,28 @@ import java.util.List;
 
 public class GRVHelper {
 
-    private static int resId = R.anim.layout_animation_fall_down;
     private static LayoutAnimationController animation;
+
+    public static void setAnimation(RecyclerView recyclerView, Animation animationType) {
+        animation = AnimationUtils.loadLayoutAnimation(recyclerView.getContext(), animationType.resId);
+
+    }
+
+    public static void setBasicSwipe(GenericAdapter adapter, @NonNull RecyclerView recyclerView, IOnSwipe iOnSwipe, final int swipeDirs) {
+        ItemTouchHelper itemTouchhelper = new ItemTouchHelper(new BaseSwipeDragAdapter(adapter, iOnSwipe, swipeDirs));
+        itemTouchhelper.attachToRecyclerView(recyclerView);
+    }
+
+    public static void setupBasicSwipeWithAdapter(GenericAdapter adapter,
+                                                  @NonNull RecyclerView recyclerView,
+                                                  ItemTouchHelper.SimpleCallback swipeAdapter
+    ) {
+        recyclerView.setAdapter(adapter);
+        ItemTouchHelper itemTouchhelper = new ItemTouchHelper(swipeAdapter);
+        itemTouchhelper.attachToRecyclerView(recyclerView);
+
+    }
+
 
     public static void setup(GenericAdapter adapter,
                              @NonNull RecyclerView recyclerView,
@@ -31,7 +51,7 @@ public class GRVHelper {
         recyclerView.setLayoutManager(layoutManager);
         recyclerView.setItemAnimator(new DefaultItemAnimator());
         recyclerView.setHasFixedSize(true);
-        animation = AnimationUtils.loadLayoutAnimation(recyclerView.getContext(), resId);
+        animation = AnimationUtils.loadLayoutAnimation(recyclerView.getContext(), Animation.FallDown.resId);
         recyclerView.setAdapter(adapter);
     }
 
@@ -41,7 +61,7 @@ public class GRVHelper {
         recyclerView.setLayoutManager(new LinearLayoutManager(recyclerView.getContext()));
         recyclerView.setItemAnimator(new DefaultItemAnimator());
         recyclerView.setHasFixedSize(true);
-        animation = AnimationUtils.loadLayoutAnimation(recyclerView.getContext(), resId);
+        animation = AnimationUtils.loadLayoutAnimation(recyclerView.getContext(), Animation.FallDown.resId);
         recyclerView.setAdapter(adapter);
     }
 
@@ -51,7 +71,7 @@ public class GRVHelper {
         recyclerView.setItemAnimator(new DefaultItemAnimator());
         recyclerView.setHasFixedSize(true);
         recyclerView.setAdapter(adapter);
-        animation = AnimationUtils.loadLayoutAnimation(recyclerView.getContext(), resId);
+        animation = AnimationUtils.loadLayoutAnimation(recyclerView.getContext(), Animation.FallDown.resId);
         recyclerView.setLayoutAnimation(animation);
         ItemTouchHelper itemTouchhelper = new ItemTouchHelper(new BaseSwipeDragAdapter(adapter, iOnSwipe, swipeDirs));
         itemTouchhelper.attachToRecyclerView(recyclerView);
@@ -66,7 +86,7 @@ public class GRVHelper {
         recyclerView.setItemAnimator(new DefaultItemAnimator());
         recyclerView.setHasFixedSize(true);
         recyclerView.setAdapter(adapter);
-        animation = AnimationUtils.loadLayoutAnimation(recyclerView.getContext(), resId);
+        animation = AnimationUtils.loadLayoutAnimation(recyclerView.getContext(), Animation.FallDown.resId);
         recyclerView.setLayoutAnimation(animation);
         ItemTouchHelper itemTouchhelper = new ItemTouchHelper(swipeAdapter);
         itemTouchhelper.attachToRecyclerView(recyclerView);
@@ -105,11 +125,16 @@ public class GRVHelper {
         return multiSnapHelper;
     }
 
-    public static int getResId() {
-        return resId;
-    }
+    public enum Animation {
+        FallDown(R.anim.layout_animation_fall_down),
+        FallBottom(R.anim.layout_animation_from_bottom),
+        Right(R.anim.layout_animation_from_right),
+        Left(R.anim.layout_animation_from_left);
+        private final int resId;
 
-    public static void setResId(int resId) {
-        GRVHelper.resId = resId;
+        Animation(int resId) {
+            this.resId = resId;
+        }
+
     }
 }

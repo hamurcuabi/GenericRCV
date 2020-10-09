@@ -2,6 +2,9 @@ package com.emrhmrc.genericrecycler.adapters;
 
 import android.content.Context;
 import android.graphics.Color;
+import android.transition.Fade;
+import android.transition.Transition;
+import android.transition.TransitionManager;
 import android.view.View;
 import android.view.ViewGroup;
 
@@ -37,6 +40,7 @@ public abstract class GenericAdapter<
         this.itemsFilter = new ArrayList<>();
         this.context = context;
         this.emptyView = emptyView;
+        listenItems();
     }
 
     @Override
@@ -56,6 +60,37 @@ public abstract class GenericAdapter<
     @Override
     public void setHasStableIds(boolean hasStableIds) {
         super.setHasStableIds(hasStableIds);
+    }
+
+    //Todo Drag can be overrid
+    @Override
+    public void onRowMoved(int fromPosition, int toPosition) {
+        if (fromPosition < toPosition) {
+            for (int i = fromPosition; i < toPosition; i++) {
+                Collections.swap(items, i, i + 1);
+            }
+        } else {
+            for (int i = fromPosition; i > toPosition; i--) {
+                Collections.swap(items, i, i - 1);
+            }
+        }
+        notifyItemMoved(fromPosition, toPosition);
+    }
+
+    @Override
+    public void onRowSelected(BaseViewHolder myViewHolder) {
+        myViewHolder.itemView.setBackgroundColor(Color.GRAY);
+
+    }
+
+    @Override
+    public void onRowClear(BaseViewHolder myViewHolder) {
+        myViewHolder.itemView.setBackgroundColor(Color.WHITE);
+
+    }
+
+    private void listenItems() {
+
     }
 
     public Context getContext() {
@@ -192,13 +227,23 @@ public abstract class GenericAdapter<
     }
 
     private void showEmptyView() {
-        if (emptyView != null)
-            emptyView.setVisibility(View.VISIBLE);
+        if (emptyView != null) {
+            toggleEmptyView();
+        }
     }
 
     private void hideEmptyView() {
-        if (emptyView != null)
-            emptyView.setVisibility(View.GONE);
+        if (emptyView != null) {
+            toggleEmptyView();
+        }
+    }
+
+    private void toggleEmptyView() {
+        Transition transition = new Fade();
+        transition.setDuration(300);
+        transition.addTarget(emptyView);
+        TransitionManager.beginDelayedTransition(emptyView, transition);
+        emptyView.setVisibility(isEmpty() ? View.VISIBLE : View.GONE);
     }
 
     private void setVisibiltity() {
@@ -208,30 +253,5 @@ public abstract class GenericAdapter<
             hideEmptyView();
     }
 
-    @Override
-    public void onRowMoved(int fromPosition, int toPosition) {
-        if (fromPosition < toPosition) {
-            for (int i = fromPosition; i < toPosition; i++) {
-                Collections.swap(items, i, i + 1);
-            }
-        } else {
-            for (int i = fromPosition; i > toPosition; i--) {
-                Collections.swap(items, i, i - 1);
-            }
-        }
-        notifyItemMoved(fromPosition, toPosition);
-    }
-
-    @Override
-    public void onRowSelected(BaseViewHolder myViewHolder) {
-        myViewHolder.itemView.setBackgroundColor(Color.GRAY);
-
-    }
-
-    @Override
-    public void onRowClear(BaseViewHolder myViewHolder) {
-        myViewHolder.itemView.setBackgroundColor(Color.WHITE);
-
-    }
 
 }

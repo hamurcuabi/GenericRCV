@@ -18,6 +18,10 @@
             app:msrv_interval="2"
             app:msrv_speed_ms_per_inch="100" />
 
+        <include
+            android:id="@+id/empty_view"
+            layout="@layout/empty_view"
+            android:visibility="gone" />
 
     </LinearLayout>
 
